@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Biblioteca - Maueie Store. Aceda aos seus jogos comprados e gerencie os seus downloads.">
+    <title>Biblioteca - Maueie Store</title>
+    <link rel="icon" type="image/png" href="Imagens/iconMaueie.png">
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/bibliotecaStyle.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar" aria-label="Navegação Principal">
+            <a href="index.html" class="logo-container" aria-label="Página Inicial - Maueie Store">
+                <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" class="logo-img" width="45"
+                    height="45">
+                <span class="logo-texto">Maueie Store</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="loja.html">Loja</a></li>
+                <li><a href="biblioteca.html" aria-current="page">Biblioteca</a></li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+
+            <div class="nav-acoes">
+                <a href="conta.html" class="nav-link" aria-label="Aceder à Minha Conta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Conta</span>
+                </a>
+
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Alternar entre modo claro e escuro">
+                    <span aria-hidden="true">🌓</span>
+                </button>
+
+                <button class="menu-hamb-btn" aria-label="Abrir menu">
+                    ☰
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="biblioteca">
+            <h2>A Sua Biblioteca de Jogos</h2>
+            <p>Gerencie, instale e jogue os títulos associados à sua conta.</p>
+
+            <div class="biblioteca-grid" id="bibliotecaGrid">
+
+                <div class="bib-card">
+                    <img src="Imagens/Grand Theft Auto V.jpg" alt="Capa de Grand Theft Auto V" loading="lazy"
+                        width="200" height="300">
+                    <div>
+                        <h3>Grand Theft Auto V</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Mundo Aberto / Ação</p>
+                    </div>
+                    <button class="jogar-btn" onclick="alert('A iniciar Grand Theft Auto V...')">Jogar</button>
+                </div>
+
+                <div class="bib-card">
+                    <img src="Imagens/The Witcher 3.jpg" alt="Capa de The Witcher 3" loading="lazy" width="200"
+                        height="300">
+                    <div>
+                        <h3>The Witcher 3</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">RPG / Mundo Aberto</p>
+                    </div>
+                    <button class="jogar-btn" onclick="alert('A iniciar The Witcher 3...')">Jogar</button>
+                </div>
+
+                <div class="bib-card">
+                    <img src="Imagens/minecraft.jpg" alt="Capa de Minecraft" loading="lazy" width="200" height="300">
+                    <div>
+                        <h3>Minecraft</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Sandbox / Sobrevivência</p>
+                    </div>
+                    <button class="jogar-btn" onclick="alert('A iniciar Minecraft...')">Jogar</button>
+                </div>
+
+                <div class="bib-card">
+                    <img src="Imagens/007 First Light.jpg" alt="Capa de 007 First Light" loading="lazy" width="200"
+                        height="300">
+                    <div>
+                        <h3>007 First Light</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Ação / Espionagem</p>
+                    </div>
+                    <button class="jogar-btn" onclick="alert('A iniciar 007 First Light...')">Jogar</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maueie Store. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+        });
+        const menuBtn = document.querySelector('.menu-hamb-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('ativo');
+            });
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacto - Maueie Store. Entre em contacto connosco para suporte ou dúvidas.">
+    <title>Contacto - Maueie Store</title>
+    <link rel="icon" type="image/png" href="Imagens/iconMaueie.png">
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/styleContacto.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar" aria-label="Navegação Principal">
+            <!-- Identidade da Marca -->
+            <div class="nav-logo">
+                <a href="index.html" aria-label="Página Inicial - Maueie Store">
+                    <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="45" height="45">
+                </a>
+                <span class="brand-title">Maueie Store</span>
+            </div>
+
+            <!-- Navegação Principal (Centro) -->
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem" aria-current="page">Início</a></li>
+                <li role="none"><a href="loja.html" role="menuitem">Loja</a></li>
+                <li role="none"><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
+                <li role="none"><a href="noticias.html" role="menuitem">Notícias</a></li>
+                <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
+            </ul>
+
+            <!-- Ações e Perfil (Direita) -->
+            <div class="nav-actions">
+                <a href="conta.html" class="account-link" aria-label="Aceder à Minha Conta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Conta</span>
+                </a>
+
+                <button id="themeToggle" class="theme-btn" aria-label="Alternar entre modo claro e escuro">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contacto">
+            <h2>Entre em Contacto</h2>
+            <p>Tem alguma dúvida, problema com uma compra ou sugestão? Envie-nos uma mensagem.</p>
+
+            <div class="contacto-wrapper">
+                <!-- Informações de Apoio -->
+                <div class="contacto-info">
+                    <h3>Informações de Suporte</h3>
+                    <p>A nossa equipa de atendimento está disponível 24 horas por dia, 7 dias por semana para ajudar com
+                        qualquer questão relacionada com a sua conta ou biblioteca de jogos.</p>
+                    <p><strong>E-mail:</strong> suporte@maueiestore.com</p>
+                    <p><strong>Horário:</strong> Seg - Dom (Online)</p>
+                </div>
+
+                <!-- Formulário de Contacto -->
+                <div class="contacto-form-container">
+                    <form id="formContacto" onsubmit="enviarMensagem(event)">
+                        <div class="form-grupo">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" required placeholder="Insira o seu nome">
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required placeholder="exemplo@dominio.com">
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" rows="5" required
+                                placeholder="Escreva a sua mensagem aqui..."></textarea>
+                        </div>
+
+                        <button type="submit" class="enviar-btn">Enviar Mensagem</button>
+                    </form>
+
+                    <div id="mensagemSucesso" class="mensagem-sucesso">
+                        Mensagem enviada com sucesso! Entraremos em contacto em breve.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maueie Store. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Alternância de Tema Claro/Escuro
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+        });
+
+        // Validação e Envio do Formulário de Contacto
+        function enviarMensagem(event) {
+            event.preventDefault(); // Evita o recarregamento da página
+
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const mensagem = document.getElementById('mensagem').value.trim();
+            const form = document.getElementById('formContacto');
+            const sucessoDiv = document.getElementById('mensagemSucesso');
+
+            if (nome && email && mensagem) {
+                // Simula o envio bem-sucedido
+                form.style.display = 'none';
+                sucessoDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

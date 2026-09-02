@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conta - Maueie Store. Aceda à sua conta ou crie um novo registo para gerir a sua biblioteca de jogos.">
+    <title>Conta - Maueie Store</title>
+    <link rel="icon" type="image/png" href="Imagens/iconMaueie.png">
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/styleconta.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <nav class="navbar" aria-label="Navegação Principal">
+            <!-- Identidade da Marca -->
+            <div class="nav-logo">
+                <a href="index.html" class="brand-link" aria-label="Página Inicial - Maueie Store">
+                    <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="45" height="45">
+                    <span class="brand-title">Maueie Store</span>
+                </a>
+            </div>
+
+            <!-- Navegação Principal (Centro) -->
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="loja.html">Loja</a></li>
+                <li><a href="biblioteca.html">Biblioteca</a></li>
+                <li><a href="noticias.html">Notícias</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+
+            <!-- Ações e Perfil (Direita) -->
+            <div class="nav-actions">
+                <a href="conta.html" class="account-link" aria-label="Aceder à Minha Conta" aria-current="page">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Conta</span>
+                </a>
+
+                <button id="themeToggle" class="theme-btn" aria-label="Alternar entre modo claro e escuro">
+                    <span aria-hidden="true">🌓</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="conta-main">
+        <section id="conta-sec">
+            <!-- ÁREA DE AUTENTICAÇÃO -->
+            <div id="authArea" class="auth-container">
+                <h2 id="authTitulo">Iniciar Sessão</h2>
+
+                <form id="authForm" novalidate>
+                    <div class="form-grupo hidden" id="grupoNome">
+                        <label for="nomeRegisto">Nome de Utilizador</label>
+                        <input type="text" id="nomeRegisto" placeholder="Escolha um nome">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="emailInput">E-mail</label>
+                        <input type="email" id="emailInput" required placeholder="exemplo@dominio.com">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="passwordInput">Palavra-passe</label>
+                        <input type="password" id="passwordInput" required placeholder="••••••••">
+                        <div id="erroMsg" class="erro-msg hidden" role="alert">E-mail ou palavra-passe incorretos.</div>
+                    </div>
+
+                    <button type="submit" class="auth-btn" id="authBtnSubmit">Entrar</button>
+                </form>
+
+                <div class="toggle-auth">
+                    <span id="toggleText">Ainda não tem conta?</span>
+                    <button type="button" id="btnToggleAuth" class="btn-link">Criar conta</button>
+                </div>
+            </div>
+
+            <!-- PAINEL DO UTILIZADOR -->
+            <div id="painelUtilizador" class="painel-utilizador hidden">
+                <h2>Bem-vindo de volta, <span id="nomeUtilizadorDisplay">Utilizador</span>!</h2>
+                <p>Este é o seu painel pessoal na Maueie Store. Aqui pode gerir a sua biblioteca de jogos e dados de perfil.</p>
+
+                <div class="user-games-panel">
+                    <h3>Os Meus Jogos</h3>
+                    <p class="empty-library-msg">Ainda não adquiriu nenhum jogo. Explore a <a href="loja.html">Loja</a> para começar!</p>
+                </div>
+
+                <button type="button" id="btnSair" class="sair-btn">Terminar Sessão</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maueie Store. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Seletores de elementos DOM
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.documentElement;
+            
+            const authForm = document.getElementById('authForm');
+            const authArea = document.getElementById('authArea');
+            const painelUtilizador = document.getElementById('painelUtilizador');
+            
+            const authTitulo = document.getElementById('authTitulo');
+            const grupoNome = document.getElementById('grupoNome');
+            const nomeRegisto = document.getElementById('nomeRegisto');
+            const emailInput = document.getElementById('emailInput');
+            const passwordInput = document.getElementById('passwordInput');
+            const erroMsg = document.getElementById('erroMsg');
+            
+            const authBtnSubmit = document.getElementById('authBtnSubmit');
+            const btnToggleAuth = document.getElementById('btnToggleAuth');
+            const toggleText = document.getElementById('toggleText');
+            const nomeUtilizadorDisplay = document.getElementById('nomeUtilizadorDisplay');
+            const btnSair = document.getElementById('btnSair');
+
+            let isRegistoMode = false;
+
+            // Alternância de Tema
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                htmlElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+            });
+
+            // Gestão do Estado de Autenticação (Alternar entre Login e Registo)
+            btnToggleAuth.addEventListener('click', () => {
+                isRegistoMode = !isRegistoMode;
+                erroMsg.classList.add('hidden');
+
+                if (isRegistoMode) {
+                    authTitulo.textContent = 'Criar Nova Conta';
+                    grupoNome.classList.remove('hidden');
+                    nomeRegisto.setAttribute('required', 'true');
+                    authBtnSubmit.textContent = 'Registar';
+                    toggleText.textContent = 'Já tem uma conta?';
+                    btnToggleAuth.textContent = 'Iniciar sessão';
+                } else {
+                    authTitulo.textContent = 'Iniciar Sessão';
+                    grupoNome.classList.add('hidden');
+                    nomeRegisto.removeAttribute('required');
+                    authBtnSubmit.textContent = 'Entrar';
+                    toggleText.textContent = 'Ainda não tem conta?';
+                    btnToggleAuth.textContent = 'Criar conta';
+                }
+            });
+
+            // Processamento do Formulário
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = emailInput.value.trim();
+                const pass = passwordInput.value.trim();
+
+                if (isRegistoMode) {
+                    const nome = nomeRegisto.value.trim();
+                    if (!nome || !email || pass.length < 4) {
+                        mostrarErro('Preencha todos os campos corretamente.');
+                        return;
+                    }
+                    const userFinal = nome || email.split('@')[0];
+                    sessionStorage.setItem('maueie_user', userFinal);
+                    mostrarPainel(userFinal);
+                } else {
+                    if (email && pass.length >= 4) {
+                        const userFinal = email.split('@')[0];
+                        sessionStorage.setItem('maueie_user', userFinal);
+                        mostrarPainel(userFinal);
+                    } else {
+                        mostrarErro('E-mail ou palavra-passe incorretos.');
+                    }
+                }
+            });
+
+            // Terminar Sessão
+            btnSair.addEventListener('click', () => {
+                sessionStorage.removeItem('maueie_user');
+                painelUtilizador.classList.add('hidden');
+                authArea.classList.remove('hidden');
+                authForm.reset();
+                erroMsg.classList.add('hidden');
+            });
+
+            // Auxiliares de Interface
+            function mostrarPainel(nome) {
+                authArea.classList.add('hidden');
+                painelUtilizador.classList.remove('hidden');
+                nomeUtilizadorDisplay.textContent = nome;
+            }
+
+            function mostrarErro(mensagem) {
+                erroMsg.textContent = mensagem;
+                erroMsg.classList.remove('hidden');
+            }
+
+            // Inicialização da Sessão
+            const utilizadorAtivo = sessionStorage.getItem('maueie_user');
+            if (utilizadorAtivo) {
+                mostrarPainel(utilizadorAtivo);
+            }
+        });
+    </script>
+</body>
+
+</html>

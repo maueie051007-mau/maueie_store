@@ -1,0 +1,397 @@
+/* =================================================================
+   ESTILOS ESPECÍFICOS DA PÁGINA NOTÍCIAS (MAUEIE STORE)
+   ================================================================ */
+
+.noticias-container,
+.noticias-container * {
+    box-sizing: border-box;
+}
+
+.noticias-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 5rem;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* --- Cabeçalho da Página --- */
+.noticias-header {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.noticias-header .breadcrumb {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.noticias-header .breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.noticias-header .breadcrumb a:hover {
+    color: var(--text-main);
+}
+
+.noticias-header .breadcrumb .current {
+    color: var(--accent-red, #ff2a4b);
+    font-weight: 600;
+}
+
+.noticias-title {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    color: var(--text-main);
+}
+
+.noticias-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.seccao-titulo {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Tags Globais --- */
+.noticia-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-red, #ff2a4b);
+    background-color: rgba(255, 42, 75, 0.12);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 42, 75, 0.25);
+}
+
+.destaque-tag {
+    margin-bottom: 0.75rem;
+}
+
+/* --- Notícia em Destaque --- */
+.destaque-section {
+    margin-bottom: 4rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.noticia-destaque-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.noticia-destaque-card:hover {
+    border-color: var(--accent-red, #ff2a4b);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
+.noticia-destaque-card h2 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+}
+
+.destaque-descricao {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Container de Vídeo Responsivo (Sem Layout Shift) */
+.video-wrapper {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    aspect-ratio: 16 / 9;
+    background-color: var(--bg-element);
+}
+
+.video-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.noticia-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --- Grelha de Notícias Secundárias --- */
+.noticias-seccao {
+    margin-bottom: 4rem;
+}
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.noticia-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.noticia-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-red, #ff2a4b);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-imagem-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-color: var(--bg-element);
+}
+
+.card-imagem-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.noticia-card:hover .card-imagem-container img {
+    transform: scale(1.05);
+}
+
+/* Tag sobre a imagem com fallback de transparência */
+.card-imagem-container .noticia-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background-color: var(--bg-card);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2;
+}
+
+@supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)) {
+    .card-imagem-container .noticia-tag {
+        background-color: rgba(18, 20, 29, 0.75);
+    }
+}
+
+.noticia-card-conteudo {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.noticia-card-conteudo h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+}
+
+.noticia-card-conteudo p {
+    font-size: 0.925rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+/* --- Calendário de Lançamentos --- */
+.calendario-seccao {
+    margin-bottom: 4rem;
+}
+
+.calendario-container {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.tabela-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabela-lancamentos {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.tabela-lancamentos th {
+    background-color: var(--bg-element);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabela-lancamentos td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.tabela-lancamentos tr:last-child td {
+    border-bottom: none;
+}
+
+.jogo-nome {
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: normal;
+}
+
+.badge-plataforma {
+    display: inline-block;
+    background-color: var(--bg-element);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.3rem;
+}
+
+.countdown-celula {
+    font-weight: 700;
+    color: var(--accent-red, #ff2a4b);
+}
+
+/* --- Tópicos Populares --- */
+.topicos-seccao {
+    margin-bottom: 2rem;
+}
+
+.topicos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.topico-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.topico-card:hover {
+    border-color: var(--accent-red, #ff2a4b);
+    transform: translateY(-2px);
+}
+
+.topico-icone {
+    font-size: 1.5rem;
+    background-color: var(--bg-element);
+    padding: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    min-height: 42px;
+}
+
+.topico-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+/* --- AJUSTES DE RESPONSIVIDADE MOBILE --- */
+@media (max-width: 768px) {
+    .noticias-container {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .noticias-header {
+        margin-bottom: 2rem;
+    }
+
+    .seccao-titulo {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .destaque-section,
+    .noticias-seccao,
+    .calendario-seccao {
+        margin-bottom: 2.5rem;
+    }
+
+    .noticia-destaque-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .destaque-descricao {
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .calendario-container {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .tabela-lancamentos th,
+    .tabela-lancamentos td {
+        padding: 0.875rem 0.65rem;
+        font-size: 0.875rem;
+    }
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Notícias e Lançamentos - Maueie Store. Mantenha-se a par de tudo o que acontece no mundo dos jogos.">
+    <title>Notícias - Maueie Store</title>
+    <link rel="icon" type="image/png" href="Imagens/iconMaueie.png">
+
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/noticiasStyle.css">
+    <link rel="stylesheet" href="Style/styleCalendario.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <nav class="navbar" aria-label="Navegação Principal">
+            <a href="index.html" class="logo-container" aria-label="Página Inicial - Maueie Store">
+                <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" class="logo-img" width="45"
+                    height="45">
+                <span class="logo-texto">Maueie Store</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="loja.html">Loja</a></li>
+                <li><a href="biblioteca.html">Biblioteca</a></li>
+                <li><a href="noticias.html" aria-current="page">Notícias</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+
+            <div class="nav-acoes">
+                <a href="conta.html" class="nav-link" aria-label="Aceder à Minha Conta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Conta</span>
+                </a>
+
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Alternar entre modo claro e escuro">
+                    <span aria-hidden="true">🌓</span>
+                </button>
+
+                <button class="menu-hamb-btn" aria-label="Abrir menu">
+                    ☰
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="noticias-container">
+        <header class="noticias-header">
+            <nav class="breadcrumb" aria-label="Navegação em migalhas">
+                <a href="index.html">Início</a> / <span class="current">Notícias</span>
+            </nav>
+            <h1 class="noticias-title">Notícias & <span class="highlight-text">Lançamentos</span></h1>
+            <p class="noticias-subtitle">Mantenha-se atualizado com as principais novidades, análises e tendências do
+                universo dos videojogos.</p>
+        </header>
+
+        <section class="destaque-section">
+            <div class="noticia-destaque-card">
+                <span class="noticia-tag destaque-tag">Destaque Principal</span>
+                <h2>O Fenómeno Grand Theft Auto VI: O que já sabemos</h2>
+                <p class="destaque-descricao">A expetativa em torno do próximo título da Rockstar Games continua a bater
+                    recordes mundiais. O primeiro trailer oficial revelou gráficos de nova geração impressionantes e um
+                    regresso detalhado ao estado de Leonida.</p>
+
+                <div class="video-wrapper">
+                    <iframe width="100%" height="420" src="Videos/Grand Theft Auto VI Trailer 2(720P_HD).mp4"
+                        title="Grand Theft Auto VI Trailer 1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="noticia-meta">Publicado a 12 de Agosto de 2026 • Por Equipa Maueie Store</div>
+            </div>
+        </section>
+
+        <section class="noticias-seccao">
+            <h2 class="seccao-titulo">Últimas Atualizações</h2>
+            <div class="noticias-grid">
+
+                <article class="noticia-card">
+                    <div class="card-imagem-container">
+                        <img src="Imagens/noticia1.jpg" alt="Elden Ring expansão" loading="lazy">
+                        <span class="noticia-tag">Indústria</span>
+                    </div>
+                    <div class="noticia-card-conteudo">
+                        <h4>A Evolução dos Jogos Souls-Like no Mercado Atual</h4>
+                        <p>Descubra como a dificuldade desafiante e a narrativa ambiental moldaram os padrões da
+                            indústria de jogos de ação moderna.</p>
+                        <div class="noticia-meta">10 de Agosto de 2026</div>
+                    </div>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="card-imagem-container">
+                        <img src="Imagens/noticia2.jpg" alt="Atualização de Hardware" loading="lazy">
+                        <span class="noticia-tag">Hardware</span>
+                    </div>
+                    <div class="noticia-card-conteudo">
+                        <h4>O Impacto dos SSDs NVMe nos Tempos de Carregamento</h4>
+                        <p>Como a nova geração de armazenamento está a eliminar os ecrãs de loading e a permitir mundos
+                            abertos muito mais densos.</p>
+                        <div class="noticia-meta">05 de Agosto de 2026</div>
+                    </div>
+                </article>
+
+                <article class="noticia-card">
+                    <div class="card-imagem-container">
+                        <img src="Imagens/noticia3.jpg" alt="Inteligência Artificial" loading="lazy">
+                        <span class="noticia-tag">Tecnologia</span>
+                    </div>
+                    <div class="noticia-card-conteudo">
+                        <h4>Inteligência Artificial e NPCs Dinâmicos</h4>
+                        <p>Estúdios começam a testar conversas procedimentais em tempo real com personagens secundárias,
+                            mudando para sempre os RPGs.</p>
+                        <div class="noticia-meta">01 de Agosto de 2026</div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="calendario-seccao">
+            <div class="calendario-container">
+                <h2 class="seccao-titulo">Calendário de Lançamentos</h2>
+                <div class="tabela-responsive">
+                    <table class="tabela-lancamentos">
+                        <thead>
+                            <tr>
+                                <th>Jogo</th>
+                                <th>Plataforma</th>
+                                <th>Data</th>
+                                <th>Contagem Decrescente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="jogo-nome">GTA VI</td>
+                                <td><span class="badge-plataforma">PS5</span> <span class="badge-plataforma">Xbox Series
+                                        X|S</span></td>
+                                <td>19/11/2026</td>
+                                <td id="countdown-gta" class="countdown-celula">A calcular...</td>
+                            </tr>
+                            <tr>
+                                <td class="jogo-nome">EA FC27</td>
+                                <td><span class="badge-plataforma">Multiplataforma</span></td>
+                                <td>31/08/2026</td>
+                                <td id="countdown-ea" class="countdown-celula">A calcular...</td>
+                            </tr>
+                            <tr>
+                                <td class="jogo-nome">Pixel Quest Mobile</td>
+                                <td><span class="badge-plataforma">iOS</span> <span
+                                        class="badge-plataforma">Android</span></td>
+                                <td>01/12/2026</td>
+                                <td id="countdown-pixel" class="countdown-celula">A calcular...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="topicos-seccao">
+            <h2 class="seccao-titulo">Tópicos Populares</h2>
+            <div class="topicos-grid">
+                <div class="topico-card">
+                    <span class="topico-icone">🤖</span>
+                    <p>O impacto da inteligência artificial na criação de NPCs.</p>
+                </div>
+                <div class="topico-card">
+                    <span class="topico-icone">🎮</span>
+                    <p>Comparativo: Consolas vs PCs de alta performance.</p>
+                </div>
+                <div class="topico-card">
+                    <span class="topico-icone">⚡</span>
+                    <p>Dicas para otimizar armazenamento em SSDs.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maueie Store. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const html = document.documentElement;
+            html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+
+        const lancamentos = [
+            { id: "countdown-gta", data: new Date("Nov 19, 2026 00:00:00").getTime() },
+            { id: "countdown-ea", data: new Date("Aug 31, 2026 00:00:00").getTime() },
+            { id: "countdown-pixel", data: new Date("Dec 01, 2026 00:00:00").getTime() }
+        ];
+
+        setInterval(() => {
+            const agora = new Date().getTime();
+            lancamentos.forEach(jogo => {
+                const elemento = document.getElementById(jogo.id);
+                if (elemento) {
+                    const dist = jogo.data - agora;
+                    if (dist < 0) {
+                        elemento.innerHTML = "<b>Já lançado!</b>";
+                        elemento.style.color = "var(--accent-red)";
+                    } else {
+                        const d = Math.floor(dist / (1000 * 60 * 60 * 24));
+                        const h = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        elemento.innerHTML = `${d}d ${h}h`;
+                    }
+                }
+            });
+        }, 1000);
+        const menuBtn = document.querySelector('.menu-hamb-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('ativo');
+            });
+        }
+    </script>
+</body>
+
+</html>

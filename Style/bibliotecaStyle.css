@@ -1,0 +1,109 @@
+/* =================================================================
+   ESTILOS ESPECÍFICOS DA PÁGINA DA BIBLIOTECA (MAUEIE STORE)
+   ================================================================ */
+
+/* Reset Local e Garantia do Box Model */
+.biblioteca-grid,
+.biblioteca-grid * {
+    box-sizing: border-box;
+}
+
+.biblioteca-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    width: 100%;
+}
+
+.bib-card {
+    background-color: var(--bg-card, var(--bg-element));
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bib-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-red);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.bib-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    background-color: var(--bg-element);
+    display: block;
+}
+
+.bib-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+}
+
+.jogar-btn {
+    background-color: var(--accent-green, #4ade80);
+    color: #000000; /* Alto contraste com o tom verde de ação */
+    border: none;
+    padding: 0.625rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    width: 100%;
+    min-height: 44px; /* Target de toque recomendado */
+    margin-top: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.jogar-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+.jogar-btn:active {
+    transform: scale(0.98);
+}
+
+/* Estado de Biblioteca Vazia */
+.aviso-vazio {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background-color: var(--bg-card, var(--bg-element));
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 1.25rem;
+}
+
+/* Responsividade Fina */
+@media (max-width: 480px) {
+    .biblioteca-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.875rem;
+    }
+
+    .bib-card {
+        padding: 0.75rem;
+    }
+
+    .bib-card img {
+        height: 200px;
+    }
+}

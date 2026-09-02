@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Maueie Store - A sua plataforma digital de jogos. Descubra os destaques, lançamentos e os melhores títulos do momento.">
+    <title>Início - Maueie Store</title>
+    <link rel="icon" type="image/png" href="Imagens/iconMaueie.png">
+    <link rel="stylesheet" href="Style/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" aria-label="Navegação Principal">
+            <div class="nav-logo">
+                <a href="index.html" aria-label="Página Inicial - Maueie Store">
+                    <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="45" height="45">
+                </a>
+                <span class="brand-title">Maueie Store</span>
+            </div>
+
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem" aria-current="page">Início</a></li>
+                <li role="none"><a href="loja.html" role="menuitem">Loja</a></li>
+                <li role="none"><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
+                <li role="none"><a href="noticias.html" role="menuitem">Notícias</a></li>
+                <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
+            </ul>
+
+            <div class="right-header-group">
+                <div class="nav-actions">
+                    <a href="conta.html" class="account-link" aria-label="Aceder à Minha Conta">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Conta</span>
+                    </a>
+
+                    <button id="themeToggle" class="theme-btn"
+                        aria-label="Alternar entre modo claro e escuro">🌓</button>
+                </div>
+
+                <!-- Botão Hambúrguer para Mobile -->
+                <button id="menuToggle" class="menu-mobile-btn" aria-label="Abrir Menu Navegação">&#9776;</button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal">
+
+        <!-- 1. CARROSSEL-->
+        <section class="steam-carousel-section" aria-roledescription="carrossel" aria-label="Jogos em Destaque">
+            <h1 class="section-title">Destaques e Recomendados</h1>
+
+            <div class="steam-carousel">
+                <button class="steam-carousel-btn prev" onclick="mudarSlideSteam(-1)"
+                    aria-label="Slide anterior">&#10094;</button>
+
+                <div class="steam-slide-container" id="steamSlideContainer">
+
+
+                    <!-- Slide 1: Dragon Ball Xenoverse 2 -->
+                    <div class="steam-slide ativo" role="group" aria-roledescription="slide"
+                        aria-label="1 de 3: Dragon Ball Xenoverse 2">
+                        <div class="slide-artwork">
+                            <img src="Imagens/Capítulo 2 da DLC.jpg" alt="Capa oficial do jogo Dragon Ball Xenoverse 2"
+                                loading="lazy">
+                        </div>
+                        <div class="slide-info">
+                            <h2>Dragon Ball Xenoverse 2</h2>
+                            <div class="slide-tags" aria-label="Géneros do jogo">
+                                <span class="tag">RPG</span>
+                                <span class="tag">Ação</span>
+                            </div>
+                            <p class="slide-desc">Vivencia a história definitiva de Dragon Ball, cria o teu próprio
+                                avatar e protege o fluxo do tempo.</p>
+                            <div class="slide-footer">
+                                <span class="slide-price" aria-label="Preço: 1799 meticais">1.799,00 MT</span>
+                                <a href="loja.html" class="steam-btn-comprar"
+                                    aria-label="Ver Dragon Ball Xenoverse 2 na loja">Ver na Loja</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: NieR:Automata -->
+                    <div class="steam-slide" role="group" aria-roledescription="slide"
+                        aria-label="2 de 3: NieR:Automata">
+                        <div class="slide-artwork">
+                            <img src="Imagens/Nier Automata.jpg" alt="Capa oficial do jogo NieR:Automata"
+                                loading="lazy">
+                        </div>
+                        <div class="slide-info">
+                            <h2>NieR:Automata</h2>
+                            <div class="slide-tags" aria-label="Géneros do jogo">
+                                <span class="tag">Ação</span>
+                                <span class="tag">RPG</span>
+                            </div>
+                            <p class="slide-desc">Desvenda a verdade sobre um mundo distópico invadido por formas de
+                                vida mecânicas extraterrestres.</p>
+                            <div class="slide-footer">
+                                <span class="slide-price" aria-label="Preço: 2499 meticais">2.499,00 MT</span>
+                                <a href="loja.html" class="steam-btn-comprar" aria-label="Ver NieR:Automata na loja">Ver
+                                    na Loja</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Tekken -->
+                    <div class="steam-slide" role="group" aria-roledescription="slide" aria-label="3 de 3: Tekken">
+                        <div class="slide-artwork">
+                            <img src="Imagens/tekken back.jpg" alt="Capa oficial do jogo Tekken" loading="lazy">
+                        </div>
+                        <div class="slide-info">
+                            <h2>Tekken</h2>
+                            <div class="slide-tags" aria-label="Géneros do jogo">
+                                <span class="tag">Luta</span>
+                                <span class="tag">Ação</span>
+                            </div>
+                            <p class="slide-desc">Entra na arena e testa as tuas habilidades nos combates mais intensos
+                                de artes marciais.</p>
+                            <div class="slide-footer">
+                                <span class="slide-price" aria-label="Preço: 2999 meticais">2.999,00 MT</span>
+                                <a href="loja.html" class="steam-btn-comprar" aria-label="Ver Tekken na loja">Ver na
+                                    Loja</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="steam-carousel-btn next" onclick="mudarSlideSteam(1)"
+                    aria-label="Próximo slide">&#10095;</button>
+            </div>
+
+            <!-- Indicadores do Carrossel -->
+            <div class="steam-dots" role="tablist" aria-label="Seletor de slides">
+                <button class="dot ativo" role="tab" aria-selected="true" aria-label="Slide 1"
+                    onclick="irParaSlide(0)"></button>
+                <button class="dot" role="tab" aria-selected="false" aria-label="Slide 2"
+                    onclick="irParaSlide(1)"></button>
+                <button class="dot" role="tab" aria-selected="false" aria-label="Slide 3"
+                    onclick="irParaSlide(2)"></button>
+            </div>
+        </section>
+
+        <section class="lancamentos-section" style="max-width: 1100px; margin: 40px auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Lançamentos Recentes</h2>
+                <a href="loja.html" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">Ver
+                    Todos na Loja &rarr;</a>
+            </div>
+
+            <div class="catalogo-grid">
+                <!-- Card de Lançamento 1 -->
+                <div class="jogo-card">
+                    <img src="Imagens/1131177631459549337.jpg" alt="Capa de FC27" loading="lazy">
+                    <div class="jogo-info">
+                        <h3>FC27</h3>
+                        <div class="slide-tags">
+                            <span class="tag">Mundo Aberto</span>
+                            <span class="tag">Arcade</span>
+                        </div>
+                        <div class="jogo-footer">
+                            <span class="slide-price">4.500 MZN</span>
+                            <a href="loja.html" class="steam-btn-comprar">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card de Lançamento 2 -->
+                <div class="jogo-card">
+                    <img src="Imagens/Gears 5 review embargo_ Gears of War 5 Xbox___.jpg" alt="Capa de GEars 5"
+                        loading="lazy">
+                    <div class="jogo-info">
+                        <h3>Gears 5</h3>
+                        <div class="slide-tags">
+                            <span class="tag">Ação</span>
+                            <span class="tag">FPS</span>
+                        </div>
+                        <div class="jogo-footer">
+                            <span class="slide-price">3.200 MZN</span>
+                            <a href="loja.html" class="steam-btn-comprar">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card de Lançamento 3 -->
+                <div class="jogo-card">
+                    <img src="Imagens/Dragon Ball_ Sparking! ZERO ganha trailer que destaca rivalidade entre Goku e Vegeta.jpg"
+                        alt="Capa de DBSZ" loading="lazy">
+                    <div class="jogo-info">
+                        <h3>Dragon ball sparklin zero</h3>
+                        <div class="slide-tags">
+                            <span class="tag">Mundo Aberto</span>
+                            <span class="tag">Ação</span>
+                        </div>
+                        <div class="jogo-footer">
+                            <span class="slide-price">3.600 MZN</span>
+                            <a href="loja.html" class="steam-btn-comprar">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. EXPLORAR POR CATEGORIA (ATALHOS DA VITRINA) -->
+        <section class="categorias-rapidas" style="max-width: 1100px; margin: 40px auto;">
+            <h2>Explorar por Género</h2>
+            <div class="cat-grid">
+                <a href="loja.html" class="cat-card" aria-label="Explorar jogos do género Mundo Aberto">
+                    <span>Mundo Aberto</span>
+                </a>
+                <a href="loja.html" class="cat-card" aria-label="Explorar jogos do género Souls Like">
+                    <span>Souls Like</span>
+                </a>
+                <a href="loja.html" class="cat-card" aria-label="Explorar jogos do género Ação">
+                    <span>Ação</span>
+                </a>
+                <a href="loja.html" class="cat-card" aria-label="Explorar jogos do género Simulação">
+                    <span>Simulação</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maueie Store. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('ativo');
+            });
+        }
+
+        let slideAtual = 0;
+        const slides = document.querySelectorAll('.steam-slide');
+        const dots = document.querySelectorAll('.dot');
+        let timerCarrossel;
+
+        function mostrarSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.remove('ativo');
+                s.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+            });
+            dots.forEach((d, i) => {
+                d.classList.remove('ativo');
+                d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+            });
+
+            slideAtual = (index + slides.length) % slides.length;
+
+            slides[slideAtual].classList.add('ativo');
+            dots[slideAtual].classList.add('ativo');
+        }
+
+        function mudarSlideSteam(direcao) {
+            mostrarSlide(slideAtual + direcao);
+            reiniciarTimer();
+        }
+
+        function irParaSlide(index) {
+            mostrarSlide(index);
+            reiniciarTimer();
+        }
+
+        function iniciarTimer() {
+            timerCarrossel = setInterval(() => {
+                mostrarSlide(slideAtual + 1);
+            }, 6000);
+        }
+
+        function reiniciarTimer() {
+            clearInterval(timerCarrossel);
+            iniciarTimer();
+        }
+
+        iniciarTimer();
+    </script>
+</body>
+
+</html>
