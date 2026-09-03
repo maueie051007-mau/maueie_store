@@ -18,38 +18,26 @@
 
     <header class="main-header">
         <nav class="navbar" aria-label="Navegação Principal">
-            <a href="index.html" class="logo-container" aria-label="Página Inicial - Maueie Store">
-                <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" class="logo-img" width="45"
-                    height="45">
-                <span class="logo-texto">Maueie Store</span>
+            <a href="index.html" class="brand-link" aria-label="Página Inicial - Maueie Store">
+                <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="35" height="35">
+                <span class="brand-title">Maueie Store</span>
             </a>
 
-            <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="loja.html">Loja</a></li>
-                <li><a href="biblioteca.html">Biblioteca</a></li>
-                <li><a href="noticias.html" aria-current="page">Notícias</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Início</a></li>
+                <li role="none"><a href="loja.html" role="menuitem">Loja</a></li>
+                <li role="none"><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
+                <li role="none"><a href="noticias.html" role="menuitem" aria-current="page">Notícias</a></li>
+                <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
+                <li role="none">
+                    <a href="conta.html" role="menuitem" class="account-link-mobile">
+                        <span>Conta</span>
+                    </a>
+                </li>
             </ul>
 
-            <div class="nav-acoes">
-                <a href="conta.html" class="nav-link" aria-label="Aceder à Minha Conta">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        aria-hidden="true">
-                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    <span>Conta</span>
-                </a>
-
-                <button id="themeToggle" class="theme-toggle-btn" aria-label="Alternar entre modo claro e escuro">
-                    <span aria-hidden="true">🌓</span>
-                </button>
-
-                <button class="menu-hamb-btn" aria-label="Abrir menu">
-                    ☰
-                </button>
+            <div class="right-header-group">
+                <button id="menuToggle" class="menu-mobile-btn" aria-label="Abrir Menu Navegação">&#9776;</button>
             </div>
         </nav>
     </header>
@@ -190,10 +178,14 @@
     </footer>
 
     <script>
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            const html = document.documentElement;
-            html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('ativo');
+            });
+        }
 
         const lancamentos = [
             { id: "countdown-gta", data: new Date("Nov 19, 2026 00:00:00").getTime() },
@@ -218,14 +210,6 @@
                 }
             });
         }, 1000);
-        const menuBtn = document.querySelector('.menu-hamb-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (menuBtn && navLinks) {
-            menuBtn.addEventListener('click', () => {
-                navLinks.classList.toggle('ativo');
-            });
-        }
     </script>
 </body>
 
