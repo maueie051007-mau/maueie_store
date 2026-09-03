@@ -16,38 +16,26 @@
 
     <header class="main-header">
         <nav class="navbar" aria-label="Navegação Principal">
-            <!-- Identidade da Marca -->
-            <div class="nav-logo">
-                <a href="index.html" class="brand-link" aria-label="Página Inicial - Maueie Store">
-                    <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="45" height="45">
-                    <span class="brand-title">Maueie Store</span>
-                </a>
-            </div>
+            <a href="index.html" class="brand-link" aria-label="Página Inicial - Maueie Store">
+                <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="35" height="35">
+                <span class="brand-title">Maueie Store</span>
+            </a>
 
-            <!-- Navegação Principal (Centro) -->
-            <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="loja.html">Loja</a></li>
-                <li><a href="biblioteca.html">Biblioteca</a></li>
-                <li><a href="noticias.html">Notícias</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+            <ul class="nav-links" id="navLinks" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Início</a></li>
+                <li role="none"><a href="loja.html" role="menuitem">Loja</a></li>
+                <li role="none"><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
+                <li role="none"><a href="noticias.html" role="menuitem">Notícias</a></li>
+                <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
+                <li role="none">
+                    <a href="conta.html" role="menuitem" class="account-link-mobile" aria-current="page">
+                        <span>Conta</span>
+                    </a>
+                </li>
             </ul>
 
-            <!-- Ações e Perfil (Direita) -->
-            <div class="nav-actions">
-                <a href="conta.html" class="account-link" aria-label="Aceder à Minha Conta" aria-current="page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        aria-hidden="true">
-                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    <span>Conta</span>
-                </a>
-
-                <button id="themeToggle" class="theme-btn" aria-label="Alternar entre modo claro e escuro">
-                    <span aria-hidden="true">🌓</span>
-                </button>
+            <div class="right-header-group">
+                <button id="menuToggle" class="menu-mobile-btn" aria-label="Abrir Menu Navegação">&#9776;</button>
             </div>
         </nav>
     </header>
@@ -87,11 +75,13 @@
             <!-- PAINEL DO UTILIZADOR -->
             <div id="painelUtilizador" class="painel-utilizador hidden">
                 <h2>Bem-vindo de volta, <span id="nomeUtilizadorDisplay">Utilizador</span>!</h2>
-                <p>Este é o seu painel pessoal na Maueie Store. Aqui pode gerir a sua biblioteca de jogos e dados de perfil.</p>
+                <p>Este é o seu painel pessoal na Maueie Store. Aqui pode gerir a sua biblioteca de jogos e dados de
+                    perfil.</p>
 
                 <div class="user-games-panel">
                     <h3>Os Meus Jogos</h3>
-                    <p class="empty-library-msg">Ainda não adquiriu nenhum jogo. Explore a <a href="loja.html">Loja</a> para começar!</p>
+                    <p class="empty-library-msg">Ainda não adquiriu nenhum jogo. Explore a <a href="loja.html">Loja</a>
+                        para começar!</p>
                 </div>
 
                 <button type="button" id="btnSair" class="sair-btn">Terminar Sessão</button>
@@ -105,106 +95,118 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Seletores de elementos DOM
             const themeToggle = document.getElementById('themeToggle');
             const htmlElement = document.documentElement;
-            
+
             const authForm = document.getElementById('authForm');
             const authArea = document.getElementById('authArea');
             const painelUtilizador = document.getElementById('painelUtilizador');
-            
+
             const authTitulo = document.getElementById('authTitulo');
             const grupoNome = document.getElementById('grupoNome');
             const nomeRegisto = document.getElementById('nomeRegisto');
             const emailInput = document.getElementById('emailInput');
             const passwordInput = document.getElementById('passwordInput');
             const erroMsg = document.getElementById('erroMsg');
-            
+
             const authBtnSubmit = document.getElementById('authBtnSubmit');
             const btnToggleAuth = document.getElementById('btnToggleAuth');
             const toggleText = document.getElementById('toggleText');
             const nomeUtilizadorDisplay = document.getElementById('nomeUtilizadorDisplay');
             const btnSair = document.getElementById('btnSair');
 
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
             let isRegistoMode = false;
 
-            // Alternância de Tema
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                htmlElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-            });
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('ativo');
+                });
+            }
 
-            // Gestão do Estado de Autenticação (Alternar entre Login e Registo)
-            btnToggleAuth.addEventListener('click', () => {
-                isRegistoMode = !isRegistoMode;
-                erroMsg.classList.add('hidden');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = htmlElement.getAttribute('data-theme');
+                    htmlElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+                });
+            }
 
-                if (isRegistoMode) {
-                    authTitulo.textContent = 'Criar Nova Conta';
-                    grupoNome.classList.remove('hidden');
-                    nomeRegisto.setAttribute('required', 'true');
-                    authBtnSubmit.textContent = 'Registar';
-                    toggleText.textContent = 'Já tem uma conta?';
-                    btnToggleAuth.textContent = 'Iniciar sessão';
-                } else {
-                    authTitulo.textContent = 'Iniciar Sessão';
-                    grupoNome.classList.add('hidden');
-                    nomeRegisto.removeAttribute('required');
-                    authBtnSubmit.textContent = 'Entrar';
-                    toggleText.textContent = 'Ainda não tem conta?';
-                    btnToggleAuth.textContent = 'Criar conta';
-                }
-            });
+            if (btnToggleAuth) {
+                btnToggleAuth.addEventListener('click', () => {
+                    isRegistoMode = !isRegistoMode;
+                    if (erroMsg) erroMsg.classList.add('hidden');
 
-            // Processamento do Formulário
-            authForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const email = emailInput.value.trim();
-                const pass = passwordInput.value.trim();
-
-                if (isRegistoMode) {
-                    const nome = nomeRegisto.value.trim();
-                    if (!nome || !email || pass.length < 4) {
-                        mostrarErro('Preencha todos os campos corretamente.');
-                        return;
+                    if (isRegistoMode) {
+                        if (authTitulo) authTitulo.textContent = 'Criar Nova Conta';
+                        if (grupoNome) grupoNome.classList.remove('hidden');
+                        if (nomeRegisto) nomeRegisto.setAttribute('required', 'true');
+                        if (authBtnSubmit) authBtnSubmit.textContent = 'Registar';
+                        if (toggleText) toggleText.textContent = 'Já tem uma conta?';
+                        btnToggleAuth.textContent = 'Iniciar sessão';
+                    } else {
+                        if (authTitulo) authTitulo.textContent = 'Iniciar Sessão';
+                        if (grupoNome) grupoNome.classList.add('hidden');
+                        if (nomeRegisto) nomeRegisto.removeAttribute('required');
+                        if (authBtnSubmit) authBtnSubmit.textContent = 'Entrar';
+                        if (toggleText) toggleText.textContent = 'Ainda não tem conta?';
+                        btnToggleAuth.textContent = 'Criar conta';
                     }
-                    const userFinal = nome || email.split('@')[0];
-                    sessionStorage.setItem('maueie_user', userFinal);
-                    mostrarPainel(userFinal);
-                } else {
-                    if (email && pass.length >= 4) {
-                        const userFinal = email.split('@')[0];
+                });
+            }
+
+            if (authForm) {
+                authForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    const pass = passwordInput ? passwordInput.value.trim() : '';
+
+                    if (isRegistoMode) {
+                        const nome = nomeRegisto ? nomeRegisto.value.trim() : '';
+                        if (!nome || !email || pass.length < 4) {
+                            mostrarErro('Preencha todos os campos corretamente.');
+                            return;
+                        }
+                        const userFinal = nome || email.split('@')[0];
                         sessionStorage.setItem('maueie_user', userFinal);
                         mostrarPainel(userFinal);
                     } else {
-                        mostrarErro('E-mail ou palavra-passe incorretos.');
+                        if (email && pass.length >= 4) {
+                            const userFinal = email.split('@')[0];
+                            sessionStorage.setItem('maueie_user', userFinal);
+                            mostrarPainel(userFinal);
+                        } else {
+                            mostrarErro('E-mail ou palavra-passe incorretos.');
+                        }
                     }
-                }
-            });
+                });
+            }
 
-            // Terminar Sessão
-            btnSair.addEventListener('click', () => {
-                sessionStorage.removeItem('maueie_user');
-                painelUtilizador.classList.add('hidden');
-                authArea.classList.remove('hidden');
-                authForm.reset();
-                erroMsg.classList.add('hidden');
-            });
+            if (btnSair) {
+                btnSair.addEventListener('click', () => {
+                    sessionStorage.removeItem('maueie_user');
+                    if (painelUtilizador) painelUtilizador.classList.add('hidden');
+                    if (authArea) authArea.classList.remove('hidden');
+                    if (authForm) authForm.reset();
+                    if (erroMsg) erroMsg.classList.add('hidden');
+                });
+            }
 
-            // Auxiliares de Interface
             function mostrarPainel(nome) {
-                authArea.classList.add('hidden');
-                painelUtilizador.classList.remove('hidden');
-                nomeUtilizadorDisplay.textContent = nome;
+                if (authArea) authArea.classList.add('hidden');
+                if (painelUtilizador) painelUtilizador.classList.remove('hidden');
+                if (nomeUtilizadorDisplay) nomeUtilizadorDisplay.textContent = nome;
             }
 
             function mostrarErro(mensagem) {
-                erroMsg.textContent = mensagem;
-                erroMsg.classList.remove('hidden');
+                if (erroMsg) {
+                    erroMsg.textContent = mensagem;
+                    erroMsg.classList.remove('hidden');
+                }
             }
 
-            // Inicialização da Sessão
             const utilizadorAtivo = sessionStorage.getItem('maueie_user');
             if (utilizadorAtivo) {
                 mostrarPainel(utilizadorAtivo);
