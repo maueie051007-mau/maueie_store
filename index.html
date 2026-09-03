@@ -14,12 +14,10 @@
 <body>
     <header>
         <nav class="navbar" aria-label="Navegação Principal">
-            <div class="nav-logo">
-                <a href="index.html" aria-label="Página Inicial - Maueie Store">
-                    <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="45" height="45">
-                </a>
+            <a href="index.html" class="brand-link" aria-label="Página Inicial - Maueie Store">
+                <img src="Imagens/iconMaueie.png" alt="Logótipo da Maueie Store" width="35" height="35">
                 <span class="brand-title">Maueie Store</span>
-            </div>
+            </a>
 
             <ul class="nav-links" id="navLinks" role="menubar">
                 <li role="none"><a href="index.html" role="menuitem" aria-current="page">Início</a></li>
@@ -27,25 +25,14 @@
                 <li role="none"><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
                 <li role="none"><a href="noticias.html" role="menuitem">Notícias</a></li>
                 <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
+                <li role="none">
+                    <a href="conta.html" role="menuitem" class="account-link-mobile">
+                        <span>Conta</span>
+                    </a>
+                </li>
             </ul>
 
             <div class="right-header-group">
-                <div class="nav-actions">
-                    <a href="conta.html" class="account-link" aria-label="Aceder à Minha Conta">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            aria-hidden="true">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        <span>Conta</span>
-                    </a>
-
-                    <button id="themeToggle" class="theme-btn"
-                        aria-label="Alternar entre modo claro e escuro">🌓</button>
-                </div>
-
-                <!-- Botão Hambúrguer para Mobile -->
                 <button id="menuToggle" class="menu-mobile-btn" aria-label="Abrir Menu Navegação">&#9776;</button>
             </div>
         </nav>
@@ -234,15 +221,6 @@
     </footer>
 
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            htmlElement.setAttribute('data-theme', newTheme);
-        });
-
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -258,6 +236,8 @@
         let timerCarrossel;
 
         function mostrarSlide(index) {
+            if (slides.length === 0) return;
+
             slides.forEach((s, i) => {
                 s.classList.remove('ativo');
                 s.setAttribute('aria-hidden', i === index ? 'false' : 'true');
@@ -270,7 +250,9 @@
             slideAtual = (index + slides.length) % slides.length;
 
             slides[slideAtual].classList.add('ativo');
-            dots[slideAtual].classList.add('ativo');
+            if (dots[slideAtual]) {
+                dots[slideAtual].classList.add('ativo');
+            }
         }
 
         function mudarSlideSteam(direcao) {
@@ -284,6 +266,7 @@
         }
 
         function iniciarTimer() {
+            if (slides.length === 0) return;
             timerCarrossel = setInterval(() => {
                 mostrarSlide(slideAtual + 1);
             }, 6000);
