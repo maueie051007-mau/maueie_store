@@ -8,7 +8,7 @@
     --border-color: #262a3b;
     --accent-red: #ff2a4b;
     --accent-red-hover: #ff526d;
-    --accent-blue: #3b82f6;
+    --accent-blue: #ff2a4b; /* Alterado para o vermelho principal da loja */
     --accent-green: #4ade80;
 }
 
@@ -22,7 +22,7 @@
     --border-color: #e2e8f0;
     --accent-red: #e11d48;
     --accent-red-hover: #be123c;
-    --accent-blue: #2563eb;
+    --accent-blue: #e11d48; /* Alterado para o vermelho principal no tema claro */
     --accent-green: #10b981;
 }
 
@@ -287,7 +287,7 @@ header {
 
 .tag {
     background-color: var(--bg-element);
-    color: var(--accent-blue);
+    color: var(--text-muted);
     font-size: 0.8rem;
     padding: 4px 10px;
     border-radius: 4px;
@@ -403,12 +403,14 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Padronizado o hover do card para usar o vermelho da loja com um suave brilho */
 .jogo-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-blue);
+    border-color: var(--accent-red);
+    box-shadow: 0 4px 20px rgba(255, 42, 75, 0.15);
 }
 
 .jogo-card img {
@@ -465,7 +467,7 @@ header {
 }
 
 .pesquisa-box input:focus {
-    border-color: var(--accent-blue);
+    border-color: var(--accent-red);
 }
 
 .filtros-genero {
@@ -488,9 +490,9 @@ header {
 
 .filtro-btn:hover,
 .filtro-btn.ativo {
-    background-color: var(--accent-blue);
+    background-color: var(--accent-red);
     color: #ffffff;
-    border-color: var(--accent-blue);
+    border-color: var(--accent-red);
 }
 
 .categorias-rapidas {
