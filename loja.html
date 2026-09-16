@@ -29,7 +29,7 @@
                 <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
                 <li role="none">
                     <a href="conta.html" role="menuitem" class="account-link-mobile">
-                        <span>Conta</span>
+                        <span id="navContaTexto">Conta</span>
                     </a>
                 </li>
             </ul>
@@ -716,6 +716,15 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navContaTexto = document.getElementById('navContaTexto');
+            const utilizadorAtivo = localStorage.getItem('maueie_user');
+            
+            if (utilizadorAtivo && navContaTexto) {
+                navContaTexto.textContent = utilizadorAtivo;
+            }
+        });
+
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
