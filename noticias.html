@@ -31,7 +31,7 @@
                 <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
                 <li role="none">
                     <a href="conta.html" role="menuitem" class="account-link-mobile">
-                        <span>Conta</span>
+                        <span id="navContaTexto">Conta</span>
                     </a>
                 </li>
             </ul>
@@ -138,7 +138,7 @@
                             <tr>
                                 <td class="jogo-nome">EA FC27</td>
                                 <td><span class="badge-plataforma">Multiplataforma</span></td>
-                                <td>31/08/2026</td>
+                                <td>18/09/2026</td>
                                 <td id="countdown-ea" class="countdown-celula">A calcular...</td>
                             </tr>
                             <tr>
@@ -178,6 +178,15 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navContaTexto = document.getElementById('navContaTexto');
+            const utilizadorAtivo = localStorage.getItem('maueie_user');
+
+            if (utilizadorAtivo && navContaTexto) {
+                navContaTexto.textContent = utilizadorAtivo;
+            }
+        });
+
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
@@ -189,7 +198,7 @@
 
         const lancamentos = [
             { id: "countdown-gta", data: new Date("Nov 19, 2026 00:00:00").getTime() },
-            { id: "countdown-ea", data: new Date("Aug 31, 2026 00:00:00").getTime() },
+            { id: "countdown-ea", data: new Date("Sep 18, 2026 00:00:00").getTime() },
             { id: "countdown-pixel", data: new Date("Dec 01, 2026 00:00:00").getTime() }
         ];
 
