@@ -1,8 +1,3 @@
-/* =================================================================
-   ESTILOS ESPECÍFICOS DA PÁGINA DE CONTA (MAUEIE STORE)
-   ================================================================ */
-
-/* Reset de box-sizing para o fluxo de autenticação */
 .auth-container,
 .auth-container * {
     box-sizing: border-box;
@@ -31,7 +26,6 @@
     font-size: 0.95rem;
 }
 
-/* Campos de entrada tratados contra zoom automático em iOS */
 .form-grupo input {
     width: 100%;
     padding: 12px 14px;
@@ -39,7 +33,7 @@
     border: 1px solid var(--border-color);
     color: var(--text-main);
     border-radius: 6px;
-    font-size: 1rem; /* Mínimo de 16px para evitar auto-zoom em navegadores mobile */
+    font-size: 1rem;
     font-family: inherit;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     appearance: none;
@@ -52,7 +46,6 @@
     box-shadow: 0 0 0 3px rgba(255, 42, 75, 0.15);
 }
 
-/* Botão principal de login/registo com alvo de toque adequado */
 .auth-btn {
     background-color: var(--accent-red, #ff2a4b);
     color: #ffffff;
@@ -63,16 +56,12 @@
     font-weight: 600;
     font-size: 1rem;
     width: 100%;
-    min-height: 48px; /* Área de toque otimizada */
-    transition: opacity 0.2s ease, transform 0.1s ease;
+    min-height: 48px;
+    transition: opacity 0.2s ease;
 }
 
 .auth-btn:hover {
     opacity: 0.9;
-}
-
-.auth-btn:active {
-    transform: scale(0.99);
 }
 
 .toggle-auth {
@@ -80,57 +69,322 @@
     margin-top: 15px;
     font-size: 0.95rem;
     color: var(--text-muted);
-    word-break: break-word;
 }
 
-.toggle-auth a {
+.btn-link {
+    background: none;
+    border: none;
     color: var(--accent-blue, #2f81f7);
     cursor: pointer;
+    font-weight: 600;
     text-decoration: underline;
-    font-weight: 500;
 }
 
-.painel-utilizador {
-    display: none;
+.hidden {
+    display: none !important;
+}
+
+.nav-account-container {
+    position: relative;
+}
+
+.dropdown-arrow {
+    font-size: 0.65rem;
+    margin-left: 4px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--bg-element);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 180px;
+    z-index: 1000;
+    padding: 6px 0;
+    margin-top: 5px;
+}
+
+.dropdown-item {
+    display: block;
     width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-/* Botão de encerramento de sessão */
+.dropdown-item:hover {
+    background-color: var(--bg-main);
+    color: var(--accent-red, #ff2a4b);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 6px 0;
+}
+
+.dropdown-item.btn-logout {
+    color: #ff4757;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--bg-element);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--accent-red, #ff2a4b);
+    flex-shrink: 0;
+}
+
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-edit-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.avatar-wrapper:hover .avatar-edit-overlay {
+    opacity: 1;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+.profile-username {
+    font-size: 1.8rem;
+    margin: 0 0 6px 0;
+    color: var(--text-main);
+}
+
+.profile-level {
+    display: inline-block;
+    padding: 4px 10px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.profile-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+}
+
+.action-btn:hover {
+    border-color: var(--accent-red, #ff2a4b);
+}
+
 .sair-btn {
     background-color: #d73a49;
     color: #ffffff;
     border: none;
-    padding: 12px 20px;
+    padding: 10px 16px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.95rem;
-    min-height: 44px;
-    width: 100%;
-    margin-top: 15px;
+    font-size: 0.9rem;
     transition: opacity 0.2s ease;
 }
 
 .sair-btn:hover {
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
-.erro-msg {
-    color: #ff4757;
+.profile-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.panel-box, .activity-box, .status-box, .stats-card {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.panel-box h3, .activity-box h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.custom-textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+.custom-textarea:focus {
+    outline: none;
+    border-color: var(--accent-red, #ff2a4b);
+}
+
+.sucesso-msg {
+    color: #2ed573;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.comm-card {
+    background: var(--bg-element);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.comm-card h4 {
+    margin: 0 0 8px 0;
+}
+
+.game-activity-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.game-thumb {
+    width: 100px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.game-activity-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+}
+
+.game-activity-info p {
+    margin: 0;
     font-size: 0.85rem;
-    margin-top: 6px;
-    display: none;
-    word-break: break-word;
+    color: var(--text-muted);
 }
 
-/* --- RESPONSIVIDADE MOBILE --- */
-@media (max-width: 480px) {
-    .auth-container {
-        padding: 20px 15px;
-        border-radius: 6px;
-    }
+.status-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
 
-    .form-grupo {
-        margin-bottom: 16px;
+.status-indicator.online {
+    width: 10px;
+    height: 10px;
+    background-color: #2ed573;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.stats-card {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-val {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-red, #ff2a4b);
+}
+
+.stat-lbl {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 650px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-actions {
+        margin-left: 0;
+        width: 100%;
+        flex-direction: column;
+    }
+    .action-btn, .sair-btn {
+        width: 100%;
+    }
+    .profile-grid, .community-grid {
+        grid-template-columns: 1fr;
     }
 }
