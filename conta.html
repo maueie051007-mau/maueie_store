@@ -27,10 +27,20 @@
                 <li role="none"><a href="biblioteca.html" role="menuitem">Biblioteca</a></li>
                 <li role="none"><a href="noticias.html" role="menuitem">Notícias</a></li>
                 <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
-                <li role="none">
-                    <a href="conta.html" role="menuitem" class="account-link-mobile" aria-current="page">
-                        <span>Conta</span>
+                <li role="none" class="nav-account-container">
+                    <a href="conta.html" role="menuitem" class="account-link-mobile" id="navContaItem" aria-current="page">
+                        <span id="navContaTexto">Conta</span>
+                        <span id="dropdownArrow" class="dropdown-arrow hidden">▼</span>
                     </a>
+                    
+                    <div id="userDropdownMenu" class="user-dropdown-menu hidden">
+                        <button type="button" class="dropdown-item" id="menuVerPerfil">Perfil</button>
+                        <button type="button" class="dropdown-item" id="menuEditarConta">Editar Conta</button>
+                        <button type="button" class="dropdown-item" id="menuComunidade">Comunidade</button>
+                        <button type="button" class="dropdown-item" id="menuSugestoes">Enviar Sugestão</button>
+                        <div class="dropdown-divider"></div>
+                        <button type="button" class="dropdown-item btn-logout" id="menuSair">Terminar Sessão</button>
+                    </div>
                 </li>
             </ul>
 
@@ -42,7 +52,6 @@
 
     <main class="conta-main">
         <section id="conta-sec">
-            <!-- ÁREA DE AUTENTICAÇÃO -->
             <div id="authArea" class="auth-container">
                 <h2 id="authTitulo">Iniciar Sessão</h2>
 
@@ -72,19 +81,109 @@
                 </div>
             </div>
 
-            <!-- PAINEL DO UTILIZADOR -->
-            <div id="painelUtilizador" class="painel-utilizador hidden">
-                <h2>Bem-vindo de volta, <span id="nomeUtilizadorDisplay">Utilizador</span>!</h2>
-                <p>Este é o seu painel pessoal na Maueie Store. Aqui pode gerir a sua biblioteca de jogos e dados de
-                    perfil.</p>
+            <div id="painelUtilizador" class="profile-container hidden">
+                <div class="profile-header">
+                    <div class="avatar-wrapper">
+                        <img id="profileAvatar" src="Imagens/iconMaueie.png" alt="Foto de Perfil">
+                        <label for="avatarInput" class="avatar-edit-overlay" title="Alterar Foto de Perfil">
+                            <span>📷 Editar</span>
+                        </label>
+                        <input type="file" id="avatarInput" accept="image/*" class="hidden">
+                    </div>
 
-                <div class="user-games-panel">
-                    <h3>Os Meus Jogos</h3>
-                    <p class="empty-library-msg">Ainda não adquiriu nenhum jogo. Explore a <a href="loja.html">Loja</a>
-                        para começar!</p>
+                    <div class="profile-info">
+                        <h1 class="profile-username" id="nomeUtilizadorDisplay">Utilizador</h1>
+                        <span class="profile-level">Nível <b>3</b></span>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button type="button" id="btnEditarPerfilHeader" class="action-btn">Editar Conta</button>
+                        <button type="button" id="btnSair" class="sair-btn">Terminar Sessão</button>
+                    </div>
                 </div>
 
-                <button type="button" id="btnSair" class="sair-btn">Terminar Sessão</button>
+                <div id="tabPerfil" class="tab-content">
+                    <div class="profile-grid">
+                        <div class="profile-left">
+                            <div class="activity-box">
+                                <h3>Atividade Recente</h3>
+                                <div class="game-activity-item">
+                                    <img src="Imagens/DBXV2.jpg" alt="Jogo Recente" class="game-thumb">
+                                    <div class="game-activity-info">
+                                        <h4>Dragon Ball Xenoverse 2</h4>
+                                        <p>49 hrs no registo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-right">
+                            <div class="status-box">
+                                <span class="status-indicator online"></span>
+                                <span>Atualmente Online</span>
+                            </div>
+                            <div class="stats-card">
+                                <div class="stat-item">
+                                    <span class="stat-val">20</span>
+                                    <span class="stat-lbl">Jogos</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-val">4</span>
+                                    <span class="stat-lbl">Insígnias</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabEditarConta" class="tab-content hidden">
+                    <div class="panel-box">
+                        <h3>Editar Informações da Conta</h3>
+                        <form id="editAccountForm">
+                            <div class="form-grupo">
+                                <label for="editNomeInput">Novo Nome de Utilizador</label>
+                                <input type="text" id="editNomeInput" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="editPasswordInput">Nova Palavra-passe</label>
+                                <input type="password" id="editPasswordInput" placeholder="Deixe em branco para não alterar">
+                            </div>
+                            <button type="submit" class="auth-btn">Guardar Alterações</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tabComunidade" class="tab-content hidden">
+                    <div class="panel-box">
+                        <h3>Comunidade Maueie Store</h3>
+                        <p>Ligue-se a outros jogadores, veja os grupos ativos e participe nas discussões.</p>
+                        <div class="community-grid">
+                            <div class="comm-card">
+                                <h4>Grupos Ativos</h4>
+                                <p>0 Grupos associados</p>
+                            </div>
+                            <div class="comm-card">
+                                <h4>Lista de Amigos</h4>
+                                <p>Nenhum amigo online de momento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tabSugestoes" class="tab-content hidden">
+                    <div class="panel-box">
+                        <h3>Enviar Sugestão ou Feedback</h3>
+                        <form id="suggestionForm">
+                            <div class="form-grupo">
+                                <label for="sugestaoTexto">A sua mensagem para os desenvolvedores</label>
+                                <textarea id="sugestaoTexto" rows="5" class="custom-textarea" required placeholder="Escreva a sua sugestão aqui..."></textarea>
+                            </div>
+                            <button type="submit" class="auth-btn">Enviar Sugestão</button>
+                            <p id="sugestaoSucesso" class="sucesso-msg hidden">Obrigado pela sua sugestão!</p>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -95,9 +194,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('themeToggle');
-            const htmlElement = document.documentElement;
-
             const authForm = document.getElementById('authForm');
             const authArea = document.getElementById('authArea');
             const painelUtilizador = document.getElementById('painelUtilizador');
@@ -114,9 +210,33 @@
             const toggleText = document.getElementById('toggleText');
             const nomeUtilizadorDisplay = document.getElementById('nomeUtilizadorDisplay');
             const btnSair = document.getElementById('btnSair');
+            const btnEditarPerfilHeader = document.getElementById('btnEditarPerfilHeader');
 
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
+            const navContaTexto = document.getElementById('navContaTexto');
+            const navContaItem = document.getElementById('navContaItem');
+            const dropdownArrow = document.getElementById('dropdownArrow');
+            const userDropdownMenu = document.getElementById('userDropdownMenu');
+
+            const profileAvatar = document.getElementById('profileAvatar');
+            const avatarInput = document.getElementById('avatarInput');
+
+            const menuVerPerfil = document.getElementById('menuVerPerfil');
+            const menuEditarConta = document.getElementById('menuEditarConta');
+            const menuComunidade = document.getElementById('menuComunidade');
+            const menuSugestoes = document.getElementById('menuSugestoes');
+            const menuSair = document.getElementById('menuSair');
+
+            const tabPerfil = document.getElementById('tabPerfil');
+            const tabEditarConta = document.getElementById('tabEditarConta');
+            const tabComunidade = document.getElementById('tabComunidade');
+            const tabSugestoes = document.getElementById('tabSugestoes');
+
+            const editAccountForm = document.getElementById('editAccountForm');
+            const editNomeInput = document.getElementById('editNomeInput');
+            const suggestionForm = document.getElementById('suggestionForm');
+            const sugestaoSucesso = document.getElementById('sugestaoSucesso');
 
             let isRegistoMode = false;
 
@@ -126,10 +246,66 @@
                 });
             }
 
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = htmlElement.getAttribute('data-theme');
-                    htmlElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+            if (navContaItem) {
+                navContaItem.addEventListener('click', (e) => {
+                    const user = localStorage.getItem('maueie_user') || localStorage.getItem('usuarioLogado');
+                    if (user) {
+                        e.preventDefault();
+                        userDropdownMenu.classList.toggle('hidden');
+                    }
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (navContaItem && !navContaItem.contains(e.target) && userDropdownMenu && !userDropdownMenu.contains(e.target)) {
+                    userDropdownMenu.classList.add('hidden');
+                }
+            });
+
+            function alternarAba(abaParaMostrar) {
+                tabPerfil.classList.add('hidden');
+                tabEditarConta.classList.add('hidden');
+                tabComunidade.classList.add('hidden');
+                tabSugestoes.classList.add('hidden');
+
+                abaParaMostrar.classList.remove('hidden');
+                userDropdownMenu.classList.add('hidden');
+            }
+
+            if (menuVerPerfil) menuVerPerfil.addEventListener('click', () => alternarAba(tabPerfil));
+            if (menuEditarConta) menuEditarConta.addEventListener('click', () => {
+                editNomeInput.value = localStorage.getItem('maueie_user') || '';
+                alternarAba(tabEditarConta);
+            });
+            if (btnEditarPerfilHeader) btnEditarPerfilHeader.addEventListener('click', () => {
+                editNomeInput.value = localStorage.getItem('maueie_user') || '';
+                alternarAba(tabEditarConta);
+            });
+            if (menuComunidade) menuComunidade.addEventListener('click', () => alternarAba(tabComunidade));
+            if (menuSugestoes) menuSugestoes.addEventListener('click', () => alternarAba(tabSugestoes));
+
+            if (editAccountForm) {
+                editAccountForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const novoNome = editNomeInput.value.trim();
+                    if (novoNome) {
+                        localStorage.setItem('maueie_user', novoNome);
+                        localStorage.setItem('usuarioLogado', novoNome);
+                        nomeUtilizadorDisplay.textContent = novoNome;
+                        navContaTexto.textContent = novoNome;
+                        alternarAba(tabPerfil);
+                    }
+                });
+            }
+
+            if (suggestionForm) {
+                suggestionForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    sugestaoSucesso.classList.remove('hidden');
+                    suggestionForm.reset();
+                    setTimeout(() => {
+                        sugestaoSucesso.classList.add('hidden');
+                    }, 3000);
                 });
             }
 
@@ -169,14 +345,11 @@
                             mostrarErro('Preencha todos os campos corretamente.');
                             return;
                         }
-                        const userFinal = nome || email.split('@')[0];
-                        sessionStorage.setItem('maueie_user', userFinal);
-                        mostrarPainel(userFinal);
+                        salvarESincronizarSessao(nome);
                     } else {
                         if (email && pass.length >= 4) {
                             const userFinal = email.split('@')[0];
-                            sessionStorage.setItem('maueie_user', userFinal);
-                            mostrarPainel(userFinal);
+                            salvarESincronizarSessao(userFinal);
                         } else {
                             mostrarErro('E-mail ou palavra-passe incorretos.');
                         }
@@ -184,20 +357,59 @@
                 });
             }
 
-            if (btnSair) {
-                btnSair.addEventListener('click', () => {
-                    sessionStorage.removeItem('maueie_user');
-                    if (painelUtilizador) painelUtilizador.classList.add('hidden');
-                    if (authArea) authArea.classList.remove('hidden');
-                    if (authForm) authForm.reset();
-                    if (erroMsg) erroMsg.classList.add('hidden');
+            if (avatarInput) {
+                avatarInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            const base64Img = event.target.result;
+                            if (profileAvatar) profileAvatar.src = base64Img;
+                            localStorage.setItem('maueie_avatar', base64Img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
                 });
             }
 
+            function encerrarSessao() {
+                localStorage.removeItem('maueie_user');
+                localStorage.removeItem('usuarioLogado');
+
+                if (painelUtilizador) painelUtilizador.style.display = 'none';
+                if (authArea) authArea.style.display = 'block';
+                if (authForm) authForm.reset();
+                if (erroMsg) erroMsg.classList.add('hidden');
+                if (navContaTexto) navContaTexto.textContent = 'Conta';
+                if (dropdownArrow) dropdownArrow.classList.add('hidden');
+                if (userDropdownMenu) userDropdownMenu.classList.add('hidden');
+            }
+
+            if (btnSair) btnSair.addEventListener('click', encerrarSessao);
+            if (menuSair) menuSair.addEventListener('click', encerrarSessao);
+
+            function salvarESincronizarSessao(nome) {
+                localStorage.setItem('maueie_user', nome);
+                localStorage.setItem('usuarioLogado', nome);
+                mostrarPainel(nome);
+            }
+
             function mostrarPainel(nome) {
-                if (authArea) authArea.classList.add('hidden');
-                if (painelUtilizador) painelUtilizador.classList.remove('hidden');
+                if (authArea) authArea.style.display = 'none';
+                if (painelUtilizador) {
+                    painelUtilizador.style.display = 'block';
+                    painelUtilizador.classList.remove('hidden');
+                }
                 if (nomeUtilizadorDisplay) nomeUtilizadorDisplay.textContent = nome;
+                if (navContaTexto) navContaTexto.textContent = nome;
+                if (dropdownArrow) dropdownArrow.classList.remove('hidden');
+
+                const savedAvatar = localStorage.getItem('maueie_avatar');
+                if (savedAvatar && profileAvatar) {
+                    profileAvatar.src = savedAvatar;
+                }
+
+                alternarAba(tabPerfil);
             }
 
             function mostrarErro(mensagem) {
@@ -207,7 +419,7 @@
                 }
             }
 
-            const utilizadorAtivo = sessionStorage.getItem('maueie_user');
+            const utilizadorAtivo = localStorage.getItem('maueie_user') || localStorage.getItem('usuarioLogado');
             if (utilizadorAtivo) {
                 mostrarPainel(utilizadorAtivo);
             }
