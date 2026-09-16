@@ -27,7 +27,7 @@
                 <li role="none"><a href="sobre.html" role="menuitem">Sobre</a></li>
                 <li role="none">
                     <a href="conta.html" role="menuitem" class="account-link-mobile">
-                        <span>Conta</span>
+                        <span id="navContaTexto">Conta</span>
                     </a>
                 </li>
             </ul>
@@ -40,7 +40,6 @@
 
     <main id="conteudo-principal">
 
-        <!-- 1. CARROSSEL-->
         <section class="steam-carousel-section" aria-roledescription="carrossel" aria-label="Jogos em Destaque">
             <h1 class="section-title">Destaques e Recomendados</h1>
 
@@ -50,8 +49,6 @@
 
                 <div class="steam-slide-container" id="steamSlideContainer">
 
-
-                    <!-- Slide 1: Dragon Ball Xenoverse 2 -->
                     <div class="steam-slide ativo" role="group" aria-roledescription="slide"
                         aria-label="1 de 3: Dragon Ball Xenoverse 2">
                         <div class="slide-artwork">
@@ -74,7 +71,6 @@
                         </div>
                     </div>
 
-                    <!-- Slide 2: NieR:Automata -->
                     <div class="steam-slide" role="group" aria-roledescription="slide"
                         aria-label="2 de 3: NieR:Automata">
                         <div class="slide-artwork">
@@ -97,7 +93,6 @@
                         </div>
                     </div>
 
-                    <!-- Slide 3: Tekken -->
                     <div class="steam-slide" role="group" aria-roledescription="slide" aria-label="3 de 3: Tekken">
                         <div class="slide-artwork">
                             <img src="Imagens/tekken back.jpg" alt="Capa oficial do jogo Tekken" loading="lazy">
@@ -124,7 +119,6 @@
                     aria-label="Próximo slide">&#10095;</button>
             </div>
 
-            <!-- Indicadores do Carrossel -->
             <div class="steam-dots" role="tablist" aria-label="Seletor de slides">
                 <button class="dot ativo" role="tab" aria-selected="true" aria-label="Slide 1"
                     onclick="irParaSlide(0)"></button>
@@ -143,7 +137,6 @@
             </div>
 
             <div class="catalogo-grid">
-                <!-- Card de Lançamento 1 -->
                 <div class="jogo-card">
                     <img src="Imagens/1131177631459549337.jpg" alt="Capa de FC27" loading="lazy">
                     <div class="jogo-info">
@@ -159,7 +152,6 @@
                     </div>
                 </div>
 
-                <!-- Card de Lançamento 2 -->
                 <div class="jogo-card">
                     <img src="Imagens/Gears 5 review embargo_ Gears of War 5 Xbox___.jpg" alt="Capa de GEars 5"
                         loading="lazy">
@@ -176,7 +168,6 @@
                     </div>
                 </div>
 
-                <!-- Card de Lançamento 3 -->
                 <div class="jogo-card">
                     <img src="Imagens/Dragon Ball_ Sparking! ZERO ganha trailer que destaca rivalidade entre Goku e Vegeta.jpg"
                         alt="Capa de DBSZ" loading="lazy">
@@ -195,7 +186,6 @@
             </div>
         </section>
 
-        <!-- 3. EXPLORAR POR CATEGORIA (ATALHOS DA VITRINA) -->
         <section class="categorias-rapidas" style="max-width: 1100px; margin: 40px auto;">
             <h2>Explorar por Género</h2>
             <div class="cat-grid">
@@ -221,6 +211,15 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navContaTexto = document.getElementById('navContaTexto');
+            const utilizadorAtivo = localStorage.getItem('maueie_user');
+            
+            if (utilizadorAtivo && navContaTexto) {
+                navContaTexto.textContent = utilizadorAtivo;
+            }
+        });
+
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
 
